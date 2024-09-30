@@ -20,27 +20,33 @@
 ### Linux
 1. clone project repo
    ```
-   git clone https://github.com/Widiskel/sight-ai-bot.git` and cd to project dir `cd sight-ai-bot
+   git clone https://github.com/vinskasenda/SightAi-Bot.git
    ```
-2. run
+2. Choose Folder
+   ```
+   cd SightAi-Bot
+   ```
+4. run
    ```
    npm install
    ```
-3. run
+5. run
    ```
    cp accounts/accounts_tmp.js accounts/accounts.js
    ```
-5. configure your accounts
+6. configure your accounts
    ```
    nano accounts/account.js
    ```
-6. configure the bot config
+7. configure the bot config
     ```
    nano config/config.js
     ```
-7. to start the app run
+8. to start the app run
     ```
     npm run start
     ```
    
-Credit : https://github.com/Widiskel/sight-ai-bot
+### Credit
+
+https://github.com/Widiskel/sight-ai-bot
