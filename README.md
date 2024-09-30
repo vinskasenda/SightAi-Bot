@@ -43,3 +43,4 @@
     npm run start
     ```
    
+Credit : https://github.com/Widiskel/sight-ai-bot
