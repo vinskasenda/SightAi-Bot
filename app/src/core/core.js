@@ -2,29 +2,29 @@ import { ethers } from 'ethers';
 import { API } from '../api/api.js';
 import { privateKey } from '../../accounts/accounts.js';
 import { Helper } from '../utils/helper.js';
-import a2_0xa4077b from '../utils/logger.js';
+import a2_0xa00f5b from '../utils/logger.js';
 import { RPC } from './network/rpc.js';
 import { SIGHTAI } from './dapps/sight_ai.js';
 import { Config } from '../../config/config.js';
 export default class Core extends API {
-  constructor(_0xac352b) {
-    super("https://sightai.io", "sightai.io", "https://sightai.io", "4K0I6S");
-    this.acc = _0xac352b;
+  constructor(_0x5f4ef5) {
+    super("https://sightai.io", 'sightai.io', "https://sightai.io", "4K0I6S");
+    this.acc = _0x5f4ef5;
     this.played = false;
     this.provider = new ethers.JsonRpcProvider(RPC.RPCURL, RPC.CHAINID);
-    this.stateTree = "%5B%22%22%2C%7B%22children%22%3A%5B%22(platform)%22%2C%7B%22children%22%3A%5B%22dashboard%22%2C%7B%22children%22%3A%5B%22__PAGE__%3F%7B%5C%22referral-code%5C%22%3A%5C%22" + this.something + "%5C%22%7D%22%2C%7B%7D%2C%22%2Fdashboard%3Freferral-code%3D" + this.something + '%22%2C%22refresh%22%5D%7D%5D%7D%5D%7D%2Cnull%2Cnull%2Ctrue%5D';
+    this.stateTree = "%5B%22%22%2C%7B%22children%22%3A%5B%22(platform)%22%2C%7B%22children%22%3A%5B%22dashboard%22%2C%7B%22children%22%3A%5B%22__PAGE__%3F%7B%5C%22referral-code%5C%22%3A%5C%22" + this.something + "%5C%22%7D%22%2C%7B%7D%2C%22%2Fdashboard%3Freferral-code%3D" + this.something + "%22%2C%22refresh%22%5D%7D%5D%7D%5D%7D%2Cnull%2Cnull%2Ctrue%5D";
   }
   async ["connectWallet"]() {
     try {
-      const _0x4e0224 = this.acc.replace(/^0x/, '');
+      const _0x28a00e = this.acc.replace(/^0x/, '');
       await Helper.delay(0x3e8, this.acc, "Connecting to Account : " + (privateKey.indexOf(this.acc) + 0x1), this);
-      const _0x56c977 = Helper.determineType(_0x4e0224);
-      a2_0xa4077b.info("Account Type : " + _0x56c977);
-      if (_0x56c977 == "Secret Phrase") {
-        this.wallet = new ethers.Wallet.fromPhrase(_0x4e0224, this.provider);
+      const _0x30ab9c = Helper.determineType(_0x28a00e);
+      a2_0xa00f5b.info("Account Type : " + _0x30ab9c);
+      if (_0x30ab9c == "Secret Phrase") {
+        this.wallet = new ethers.Wallet.fromPhrase(_0x28a00e, this.provider);
       } else {
-        if (_0x56c977 == "Private Key") {
-          this.wallet = new ethers.Wallet(_0x4e0224.trim(), this.provider);
+        if (_0x30ab9c == "Private Key") {
+          this.wallet = new ethers.Wallet(_0x28a00e.trim(), this.provider);
         } else {
           throw Error("Invalid account Secret Phrase or Private Key");
         }
@@ -32,180 +32,180 @@ export default class Core extends API {
       this.address = this.wallet.address;
       this.cookie = "wagmi.recentConnectorId=\"com.okex.wallet\"; wagmi.store={\"state\":{\"connections\":{\"__type\":\"Map\",\"value\":[[\"b5fe8e1e492\",{\"accounts\":[\"" + this.wallet.address + "\"],\"chainId\":17000,\"connector\":{\"id\":\"com.okex.wallet\",\"name\":\"OKX Wallet\",\"type\":\"injected\",\"uid\":\"b5fe8e1e492\"}}],[\"8c5b60aac25\",{\"accounts\":[\"" + this.wallet.address + "\"],\"chainId\":17000,\"connector\":{\"id\":\"metaMask\",\"name\":\"MetaMask\",\"type\":\"injected\",\"uid\":\"8c5b60aac25\"}}]]},\"chainId\":17000,\"current\":\"8c5b60aac25\"},\"version\":2}";
       await Helper.delay(0x3e8, this.acc, "Wallet connected " + JSON.stringify(this.wallet.address), this);
-    } catch (_0xb9bb1b) {
-      throw _0xb9bb1b;
+    } catch (_0x2824dd) {
+      throw _0x2824dd;
     }
   }
-  async ["getBalance"](_0x5bab79 = false) {
+  async ["getBalance"](_0x56bbc8 = false) {
     try {
-      if (!_0x5bab79) {
+      if (!_0x56bbc8) {
         await Helper.delay(0x1f4, this.acc, "Getting Wallet Balance of " + this.wallet.address, this);
       }
-      const _0x49495a = ethers.formatEther(await this.provider.getBalance(this.wallet.address));
-      this.balance = _0x49495a;
+      const _0x240bc8 = ethers.formatEther(await this.provider.getBalance(this.wallet.address));
+      this.balance = _0x240bc8;
       await Helper.delay(0x1f4, this.acc, "Balance updated", this);
-    } catch (_0x3a487e) {
-      throw _0x3a487e;
+    } catch (_0x4d769c) {
+      throw _0x4d769c;
     }
   }
-  async ["getUserInfo"](_0x361cc5 = false) {
+  async ['getUserInfo'](_0xea554b = false) {
     try {
-      if (_0x361cc5) {
+      if (_0xea554b) {
         await Helper.delay(0x1f4, this.acc, "Getting User Information of " + this.wallet.address, this);
       }
-      const _0x578e94 = await this.fetch("/dashboard?referral-code=" + this.something, "POST", undefined, [this.address], {
-        'Referer': "https://sightai.io/dashboard?referral-code=" + this.something,
-        'Next-Action': '5dd1862a3d5d9a970c36c027f2d82f7280223906',
+      const _0xcb8e68 = await this.fetch("/dashboard?referral-code=" + this.something, "POST", undefined, [this.address], {
+        'Referer': 'https://sightai.io/dashboard?referral-code=' + this.something,
+        'Next-Action': "5dd1862a3d5d9a970c36c027f2d82f7280223906",
         'Next-Router-State-Tree': this.stateTree,
         'Cookie': this.cookie
       });
-      if (_0x578e94.status == 0xc8) {
-        this.user = this.decodeData(_0x578e94.message);
+      if (_0xcb8e68.status == 0xc8) {
+        this.user = this.decodeData(_0xcb8e68.message);
         this.cookie = "wagmi.recentConnectorId=\"com.okex.wallet\"; wagmi.store={\"state\":{\"connections\":{\"__type\":\"Map\",\"value\":[[\"b5fe8e1e492\",{\"accounts\":[\"" + this.address + "\"],\"chainId\":17000,\"connector\":{\"id\":\"com.okex.wallet\",\"name\":\"OKX Wallet\",\"type\":\"injected\",\"uid\":\"b5fe8e1e492\"}}],[\"8c5b60aac25\",{\"accounts\":[\"" + this.address + "\"],\"chainId\":17000,\"connector\":{\"id\":\"metaMask\",\"name\":\"MetaMask\",\"type\":\"injected\",\"uid\":\"8c5b60aac25\"}}]]},\"chainId\":17000,\"current\":\"8c5b60aac25\"},\"version\":2}; " + this.sessionCookie;
-        if (_0x361cc5) {
+        if (_0xea554b) {
           await Helper.delay(0x1f4, this.acc, "Successfully Got User Data", this);
         }
       }
-    } catch (_0x35f472) {
-      throw _0x35f472;
+    } catch (_0x465dc1) {
+      throw _0x465dc1;
     }
   }
-  async ['checkIn']() {
+  async ["checkIn"]() {
     try {
       await Helper.delay(0x1f4, this.acc, "Try To Check In...", this);
-      const _0x319834 = await this.fetch('/dashboard?referral-code=' + this.something, "POST", undefined, [], {
+      const _0x3f34e7 = await this.fetch("/dashboard?referral-code=" + this.something, 'POST', undefined, [], {
         'Referer': "https://sightai.io/dashboard?referral-code=" + this.something,
         'Next-Action': "e5afaaaeff44c664f214a016c10409c8e930d77a",
         'Next-Router-State-Tree': this.stateTree,
         'Cookie': this.cookie
       });
-      if (_0x319834.status == 0xc8) {
+      if (_0x3f34e7.status == 0xc8) {
         await Helper.delay(0x1f4, this.acc, "Successfully Check In", this);
       } else {
-        throw Error("Failed To Check In " + _0x319834.message);
+        throw Error("Failed To Check In " + _0x3f34e7.message);
       }
-    } catch (_0x129e3a) {
-      throw _0x129e3a;
+    } catch (_0x2d578d) {
+      throw _0x2d578d;
     }
   }
   async ["connectSightAiDapps"]() {
     await Helper.delay(0x3e8, this.acc, "Connecting to Sight Ai Dapps", this);
-    const _0x27bd93 = SIGHTAI.URL + " wants you to sign in with your Ethereum account: " + this.address + "\n\nMake sure that you trust this site and are aware of the security implications of signing this message.\n\nURI: " + SIGHTAI.URL + "\nVersion: " + SIGHTAI.VERSION + "\nChain ID: " + RPC.CHAINID + "\nNonce: " + Helper.generateNonce() + "\nIssued At: " + new Date().toISOString() + "\n";
-    a2_0xa4077b.info("Message to sign: " + _0x27bd93);
-    const _0x1b37e2 = await this.wallet.signMessage(_0x27bd93);
-    a2_0xa4077b.info("Signed Message: " + _0x1b37e2);
-    const _0x2cf470 = await this.fetch("/dashboard?referral-code=" + this.something, 'POST', undefined, [_0x1b37e2, _0x27bd93, this.something], {
-      'Referer': 'https://sightai.io/dashboard?referral-code=' + this.something,
-      'Next-Action': '3b934a35aaaa2acd0f7846cda4c3b1031a840b89',
+    const _0x5b135c = SIGHTAI.URL + " wants you to sign in with your Ethereum account: " + this.address + "\n\nMake sure that you trust this site and are aware of the security implications of signing this message.\n\nURI: " + SIGHTAI.URL + "\nVersion: " + SIGHTAI.VERSION + "\nChain ID: " + RPC.CHAINID + "\nNonce: " + Helper.generateNonce() + "\nIssued At: " + new Date().toISOString() + "\n";
+    a2_0xa00f5b.info("Message to sign: " + _0x5b135c);
+    const _0x33faa6 = await this.wallet.signMessage(_0x5b135c);
+    a2_0xa00f5b.info("Signed Message: " + _0x33faa6);
+    const _0x4c778a = await this.fetch("/dashboard?referral-code=" + this.something, 'POST', undefined, [_0x33faa6, _0x5b135c, this.something], {
+      'Referer': "https://sightai.io/dashboard?referral-code=" + this.something,
+      'Next-Action': "3b934a35aaaa2acd0f7846cda4c3b1031a840b89",
       'Next-Router-State-Tree': this.stateTree,
       'Cookie': this.cookie
     });
-    if (_0x2cf470.status == 0xc8) {
+    if (_0x4c778a.status == 0xc8) {
       await Helper.delay(0x1f4, this.acc, "Connected to Sight AI", this);
-      this.sightAiSignature = _0x1b37e2;
+      this.sightAiSignature = _0x33faa6;
     } else {
       throw Error("Failed to connect to SIGHT AI");
     }
   }
-  async ["getArcadeData"](_0x5abe22 = false) {
+  async ["getArcadeData"](_0x1ae4a5 = false) {
     try {
-      if (_0x5abe22) {
+      if (_0x1ae4a5) {
         await Helper.delay(0x1f4, this.acc, "Getting Arcade Game Information...", this);
       }
-      const _0x55977c = await this.fetch("/fomo", "POST", undefined, [0x0, "$undefined", 0x1, 0x6], {
+      const _0x5e2547 = await this.fetch("/fomo", "POST", undefined, [0x0, "$undefined", 0x1, 0x6], {
         'Referer': "https://sightai.io/fomo",
         'Next-Action': "5ac42dcc7a005b04d92431cdc4172391e05d2ca3",
         'Next-Router-State-Tree': this.stateTree,
         'Cookie': this.cookie
       });
-      if (_0x55977c.status == 0xc8) {
-        const _0x2f1bf9 = this.decodeData(_0x55977c.message);
+      if (_0x5e2547.status == 0xc8) {
+        const _0x4d6cdb = this.decodeData(_0x5e2547.message);
         this.arcade = [];
-        if (_0x2f1bf9.pools) {
-          this.arcade.push(..._0x2f1bf9.pools);
+        if (_0x4d6cdb.pools) {
+          this.arcade.push(..._0x4d6cdb.pools);
         }
-        this.availableArcade = this.arcade.find(_0x5a8168 => _0x5a8168.state == 0x1 || _0x5a8168.state == 0x2 || _0x5a8168.winner == "0x0000000000000000000000000000000000000000");
-        if (_0x5abe22) {
+        this.availableArcade = this.arcade.find(_0x4aa99a => _0x4aa99a.state == 0x1 || _0x4aa99a.state == 0x2 || _0x4aa99a.winner == '0x0000000000000000000000000000000000000000');
+        if (_0x1ae4a5) {
           await Helper.delay(0x1f4, this.acc, "Successfully Got Arcade Info", this);
         }
       }
-    } catch (_0x1b3567) {
-      throw _0x1b3567;
+    } catch (_0x16d00e) {
+      throw _0x16d00e;
     }
   }
-  async ['playArcade'](_0x5860aa) {
+  async ["playArcade"](_0x5b2c4b) {
     try {
-      await Helper.delay(0x3e8, this.acc, "Playing Arcade Game ID " + _0x5860aa.id + "...", this);
+      await Helper.delay(0x3e8, this.acc, "Playing Arcade Game ID " + _0x5b2c4b.id + "...", this);
       await Helper.delay(0x1f4, this.acc, "Prepare for Tx...", this);
       await Helper.delay(0x1f4, this.acc, "Estimating Gas...", this);
-      const _0x4f6adf = ethers.parseEther(Config.PLAYAMOUNT.toString());
-      const _0x16a9d0 = Config.RAWDATA;
-      const _0x401964 = await this.provider.getTransactionCount(this.wallet.address, 'latest');
-      const _0xc5885f = await this.provider.getFeeData();
-      const _0x5e6450 = await this.estimateGasWithRetry(_0x5860aa.address, _0x4f6adf, _0x16a9d0, 0x3);
+      const _0x342539 = ethers.parseEther(Config.PLAYAMOUNT.toString());
+      const _0x2c9878 = Config.RAWDATA;
+      const _0xab2b26 = await this.provider.getTransactionCount(this.wallet.address, "latest");
+      const _0x32f873 = await this.provider.getFeeData();
+      const _0x4846a3 = await this.estimateGasWithRetry(_0x5b2c4b.address, _0x342539, _0x2c9878, 0x3);
       await Helper.delay(0x1f4, this.acc, "Build Tx Data...", this);
-      const _0x59bd36 = {
+      const _0x2ed2bc = {
         'from': this.address,
-        'to': _0x5860aa.address,
-        'value': _0x4f6adf,
-        'gasLimit': _0x5e6450,
-        'gasPrice': _0xc5885f.gasPrice,
-        'nonce': _0x401964,
-        'data': _0x16a9d0
+        'to': _0x5b2c4b.address,
+        'value': _0x342539,
+        'gasLimit': _0x4846a3,
+        'gasPrice': _0x32f873.gasPrice,
+        'nonce': _0xab2b26,
+        'data': _0x2c9878
       };
-      a2_0xa4077b.info("Preparing to send transaction for Arcade Game ID " + _0x5860aa.id);
-      await this.executeTx(_0x59bd36);
+      a2_0xa00f5b.info("Preparing to send transaction for Arcade Game ID " + _0x5b2c4b.id);
+      await this.executeTx(_0x2ed2bc);
       this.played = true;
-    } catch (_0x102dc2) {
-      await Helper.delay(0xbb8, this.acc, "Error Playing Arcade " + _0x102dc2.message + "...", this);
+    } catch (_0x121e99) {
+      await Helper.delay(0xbb8, this.acc, "Error Playing Arcade " + _0x121e99.message + "...", this);
       this.played = false;
     }
   }
-  async ["estimateGasWithRetry"](_0x2f3244, _0x5bae0f, _0x47d7d4, _0x2f9408 = 0x3, _0x400923 = 0xbb8) {
-    for (let _0x3195a6 = 0x0; _0x3195a6 < _0x2f9408; _0x3195a6++) {
+  async ['estimateGasWithRetry'](_0x3c1a09, _0x262da1, _0x5db9cb, _0x30c4ea = 0x3, _0x2e0dca = 0xbb8) {
+    for (let _0x40f877 = 0x0; _0x40f877 < _0x30c4ea; _0x40f877++) {
       try {
-        const _0x25559b = await this.provider.estimateGas({
+        const _0x5ccf0b = await this.provider.estimateGas({
           'from': this.wallet.address,
-          'to': _0x2f3244,
-          'value': _0x5bae0f,
-          'data': _0x47d7d4
+          'to': _0x3c1a09,
+          'value': _0x262da1,
+          'data': _0x5db9cb
         });
-        return _0x25559b;
-      } catch (_0x2e6be8) {
-        await Helper.delay(_0x400923, this.acc, _0x2e6be8.shortMessage + "... Attempt " + (_0x3195a6 + 0x1) + " of " + _0x2f9408, this);
-        if (_0x3195a6 === _0x2f9408 - 0x1) {
-          throw Error("Failed to estimate gas after " + _0x2f9408 + " attempts.");
+        return _0x5ccf0b;
+      } catch (_0x27de98) {
+        await Helper.delay(_0x2e0dca, this.acc, _0x27de98.shortMessage + "... Attempt " + (_0x40f877 + 0x1) + " of " + _0x30c4ea, this);
+        if (_0x40f877 === _0x30c4ea - 0x1) {
+          throw Error("Failed to estimate gas after " + _0x30c4ea + " attempts.");
         }
       }
     }
   }
-  ["decodeData"](_0xb33f25) {
-    const _0x4d50d1 = _0xb33f25.split("\n").filter(Boolean);
-    let _0x5d2536 = null;
-    _0x4d50d1.forEach(_0x4cf007 => {
-      if (_0x4cf007.startsWith('1:')) {
-        const _0x1140a7 = _0x4cf007.substring(0x2).trim();
+  ['decodeData'](_0x147545) {
+    const _0x2012b8 = _0x147545.split("\n").filter(Boolean);
+    let _0x183f19 = null;
+    _0x2012b8.forEach(_0x36c08b => {
+      if (_0x36c08b.startsWith('1:')) {
+        const _0x24a5bb = _0x36c08b.substring(0x2).trim();
         try {
-          _0x5d2536 = JSON.parse(_0x1140a7);
-        } catch (_0x59910b) {
-          _0x5d2536 = {};
+          _0x183f19 = JSON.parse(_0x24a5bb);
+        } catch (_0x235a6e) {
+          _0x183f19 = {};
         }
       }
     });
-    let _0x338abd = JSON.stringify(_0x5d2536).replace(new RegExp(this.something, 'g'), "?????");
-    if (_0x338abd.length > 0xc8) {
-      _0x338abd = _0x338abd.substring(0x0, 0xc8) + "...";
+    let _0x14fb57 = JSON.stringify(_0x183f19).replace(new RegExp(this.something, 'g'), '?????');
+    if (_0x14fb57.length > 0xc8) {
+      _0x14fb57 = _0x14fb57.substring(0x0, 0xc8) + "...";
     }
-    a2_0xa4077b.info("JSON Data : " + _0x338abd);
-    return _0x5d2536;
+    a2_0xa00f5b.info("JSON Data : " + _0x14fb57);
+    return _0x183f19;
   }
-  async ['executeTx'](_0x1892a3) {
-    a2_0xa4077b.info("TX DATA " + JSON.stringify(Helper.serializeBigInt(_0x1892a3)));
+  async ["executeTx"](_0x405644) {
+    a2_0xa00f5b.info("TX DATA " + JSON.stringify(Helper.serializeBigInt(_0x405644)));
     await Helper.delay(0x1f4, this.acc, "Executing TX...", this);
-    const _0x285046 = await this.wallet.sendTransaction(_0x1892a3);
-    const _0x52964b = await _0x285046.wait();
-    a2_0xa4077b.info("Tx Confirmed and Finalizing: " + JSON.stringify(_0x52964b));
-    await Helper.delay(0x1388, this.acc, "Tx Executed \n" + RPC.EXPLORER + "tx/" + _0x52964b.hash, this);
+    const _0x9194e2 = await this.wallet.sendTransaction(_0x405644);
+    const _0x12125a = await _0x9194e2.wait();
+    a2_0xa00f5b.info("Tx Confirmed and Finalizing: " + JSON.stringify(_0x12125a));
+    await Helper.delay(0x1388, this.acc, "Tx Executed \n" + RPC.EXPLORER + 'tx/' + _0x12125a.hash, this);
     await this.getBalance(true);
   }
 }
