@@ -1,4 +1,4 @@
 export class SIGHTAI {
-    static ["URL"] = 'https://sightai.io';
-    static ['VERSION'] = '1';
-  }
+  static ["URL"] = "https://sightai.io";
+  static ["VERSION"] = '1';
+}
