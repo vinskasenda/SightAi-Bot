@@ -1,37 +1,37 @@
 import { Twisters } from 'twisters';
 import './helper.js';
-import a7_0x4d2969 from './logger.js';
-import a7_0x5b8d0d from '../core/core.js';
+import a7_0x1fe6c9 from './logger.js';
+import a7_0x32ced7 from '../core/core.js';
 import { privateKey } from '../../accounts/accounts.js';
 import { RPC } from '../core/network/rpc.js';
 class Twist {
   constructor() {
     this.twisters = new Twisters();
   }
-  ["log"](_0x53b6f3 = '', _0xf072d = '', _0x2a13cc = new a7_0x5b8d0d(), _0x119b74) {
-    if (_0x119b74 == undefined) {
-      a7_0x4d2969.info("Account " + (privateKey.indexOf(_0xf072d) + 0x1) + " - " + _0x53b6f3);
-      _0x119b74 = '-';
+  ["log"](_0x37634b = '', _0x15768c = '', _0x293b2f = new a7_0x32ced7(), _0xcb920d) {
+    if (_0xcb920d == undefined) {
+      a7_0x1fe6c9.info("Account " + (privateKey.indexOf(_0x15768c) + 0x1) + " - " + _0x37634b);
+      _0xcb920d = '-';
     }
-    const _0x413260 = _0x2a13cc.address ?? '-';
-    const _0x225bc5 = _0x2a13cc.balance ?? '-';
-    const _0x2c2220 = _0x2a13cc.user ?? {};
-    const _0x366e31 = _0x2c2220.point ?? '-';
-    this.twisters.put(_0xf072d.id, {
-      'text': "\n================== Account " + (privateKey.indexOf(_0xf072d) + 0x1) + " =================\nAddress      : " + _0x413260 + "\nBalance      : " + _0x225bc5 + " " + RPC.SYMBOL + "\nPoint        : " + _0x366e31 + "\n\nStatus : " + _0x53b6f3 + "\nDelay : " + _0x119b74 + "\n=============================================="
+    const _0x5e10eb = _0x293b2f.address ?? '-';
+    const _0x41cbaa = _0x293b2f.balance ?? '-';
+    const _0x5df154 = _0x293b2f.user ?? {};
+    const _0x434626 = _0x5df154.point ?? '-';
+    this.twisters.put(_0x15768c.id, {
+      'text': "\n================== Account " + (privateKey.indexOf(_0x15768c) + 0x1) + " =================\nAddress      : " + _0x5e10eb + "\nBalance      : " + _0x41cbaa + " " + RPC.SYMBOL + "\nPoint        : " + _0x434626 + "\n\nStatus : " + _0x37634b + "\nDelay : " + _0xcb920d + "\n=============================================="
     });
   }
-  ['info'](_0x31f5ef = '') {
+  ["info"](_0x91c027 = '') {
     this.twisters.put(0x2, {
-      'text': "\n==============================================\nInfo : " + _0x31f5ef + "\n=============================================="
+      'text': "\n==============================================\nInfo : " + _0x91c027 + "\n=============================================="
     });
     return;
   }
   ["clearInfo"]() {
     this.twisters.remove(0x2);
   }
-  ["clear"](_0x243311) {
-    this.twisters.remove(_0x243311);
+  ["clear"](_0x388cc7) {
+    this.twisters.remove(_0x388cc7);
   }
 }
 export default new Twist();
